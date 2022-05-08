@@ -81,6 +81,7 @@ print(utils.inspect(tbl))
 
 inspect returns a string with the representation of the variable passed as argument. It can be everything
 e.g. for functions : `function(arg1, arg2) end`
+
 ![inspect](./img/inspect2.png)
 
 ```lua
@@ -107,6 +108,7 @@ If set to false the output will be more readable. e.g. : `utils.inspect(tbl, {co
 
 #### *options.depth*
 If set to a number the output will be limited to that depth, and if false, no maximum depth will be used. e.g. : `utils.inspect(tbl, {depth = 1})`
+
 ![inspect](./img/inspect5.png)
 
 e.g. : `utils.inspect(tbl, {depth = 0})`
