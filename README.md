@@ -57,6 +57,8 @@ cyan
 white
 reset
 ```
+
+e.g. : `&blu / &&gre / &Yel / &&Red`
 * `strDecolorize`
 ```lua
 local original = utils.strDecolorize(colored)
@@ -76,7 +78,7 @@ print(utils.inspect(tbl))
 ```
 ![inspect](./img/inspect.png)
 
-inspect returns a string with the representation of the variable passed as argument. It can be everything
+Inspect returns a string with the representation of the variable passed as argument. It can be everything
 e.g. for functions : `function(arg1, arg2) end`
 
 ![inspect](./img/inspect2.png)
@@ -118,7 +120,7 @@ If set to a number the table output will be limited to that length, and if false
 ![inspect](./img/inspect7.png)
 
 #### *options.maxStringLen*
-the same as *maxTableLen* but for strings. e.g. : `utils.inspect({str="Hello, World!"}, {maxStringLen = 5})`
+The same as *maxTableLen* but for strings. e.g. : `utils.inspect({str="Hello, World!"}, {maxStringLen = 5})`
 
 ![inspect](./img/inspect8.png)
 
@@ -197,7 +199,7 @@ local function construct(self, name)
     self.name = name
 end
 ```
-This is equivalent to:the constructor in JS. When you extend a class `Class:extend(construct, data)`, each time you initialize a new class `Class:new(data)`, the constructor will be called. In our exemple, each time a Cat ou kitten is called, the constructor print a message, and assign the data to the object. (see the code above)
+This is equivalent to the constructor in JS. When you extend a class `Class:extend(construct, data)`, each time you initialize a new class `Class:new(data)`, the constructor will be called. In our exemple, each time a `Cat` ou `Kitty` is called, the constructor print a message, and assign the data to the object. (see the code above)
 
 * data and prototypes
 ```lua
@@ -210,7 +212,7 @@ local kitty = {
 }
 ```
 
-Kitty will be used as the base of ou Class `Class:extend(construct, kitty)`. each function will be stored in the class.protoype to a better view of the class data, and each other data will be on the class, even when initialized `Class:new(data)`.
+Kitty will be used as the base of ou Class `Class:extend(construct, kitty)`. each function will be stored in the class.prototype for a better view of the class data, and each other data will be on the class, even when initialized `Class:new(data)`.
 
 ```lua
 local cat = {
@@ -254,6 +256,8 @@ For now, It only contains a few range of methods, but as the module will be upda
 ```lua
 local Array = utils.Array
 local array = Array:new() --empty array
+local array = Array:new(10, function(i) return i+1 end) 
+-- 10 is the size of the array, using a function to fill it {2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
 local array2 = Array:new({1, 2, 3, 4, 5, key="value"})
 --array from a table {1, 2, 3, 4, 5, "value"}
 local array3 = Array:new("Hello, Wolrd")
@@ -267,6 +271,22 @@ e.g. : `utils.inspect(array:getPrototype())`
  'indexOf', 'shift', 'merge', 'reduce', 'forEach', 'join', 'pop', 'split',
  'find', 'clone', 'every', 'filter', 'remove', 'sort', 'some','slice', 'push'}
 ```
+
+You can use a prototype on an Array with `array:prototype(arg)`.
+```lua	
+local array = Array:new(10, function(i) return i end)
+-- array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+array:reverse()
+-- array = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+array:shuffle()
+-- array = {9, 10, 8, 1, 6, 2, 4, 3, 5, 7}
+array:sort(function(a, b) return a < b end)
+-- array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+local map = array:map(function(i) return i*2 end)
+-- map = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20}
+-- array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+```
+
 ---
 # 3. Changelog
 changelog is viewable on [changelog](./CHANGLOG.md)
@@ -275,14 +295,14 @@ changelog is viewable on [changelog](./CHANGLOG.md)
 
 # 4. Contributing
 By using this module and reporting issues, you help me to improve it.
-But you can suggest me to add new or features too. I can accept critics, as long as it's constructive.
+But you can suggest me to add new features too. I can accept critics, as long as it's constructive.
 Oh and english isn't my first language, so if you see some mistakes, please tell me.
 
 # 5. License and Thanks
 * [License](./LICENSE)
 
 
-> You are free to use my code, and apply changes, and if you can credite me, I will be happy.
+> You are free to use my code, and apply changes, and if you can credit me, I will be happy.
 
 * Thanks
 
