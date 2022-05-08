@@ -2,8 +2,6 @@
 
 1. Presentation
 2. Usage
-    1. Documentation
-    2. Exemples
 3. Changelog
 4. Contributing
 5. License and thanks
@@ -20,7 +18,6 @@ In the future, not so long to wait, a UI manager for love2d will be added, and a
 
 ---
 ## 2. Usage
-###     1. Documentation
 
 `adding the module:`
 ```lua
